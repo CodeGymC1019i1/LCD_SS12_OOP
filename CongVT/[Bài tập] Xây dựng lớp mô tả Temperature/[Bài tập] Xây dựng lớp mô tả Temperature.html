@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Xây dựng lớp mô tả Temperature
+    </title>
+</head>
+<body>
+<script>
+    function Temperature(tempC) {
+        this.tempC = tempC;
+        this.tempF = function () {
+            return (this.tempC*1.8+32)
+        };
+        this.tempK = function () {
+            return this.tempC*1 + 273.15;
+        };
+    }
+
+    let tempC = new Temperature(prompt('Input tempC'));
+    document.write(tempC.tempF()+ '<br>');
+    document.write(tempC.tempK());
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả hình chữ nhật</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1368px" height="768px" style="border: 1px solid #d3d3d3;"></canvas>
+
+<script>
+    let Rectangle = function (x, i, length, width) {
+        this.x = x;
+        this.i = i;
+        this.length = length;
+        this.width  = width;
+        this.getRectangleArea = function () {
+            return length*width;
+        };
+        this.getRectanglePerimeter = function () {
+            return (length+width)*2;
+        };
+        this.drawRectangle = function () {
+            let ctx = document.getElementById("myCanvas").getContext("2d");
+            ctx.beginPath();
+            ctx.rect(x, i, length, width);
+            ctx.stroke();
+
+        }
+    };
+    function inputRectangle() {
+        let x = parseInt(prompt('Input x'));
+        let i = parseInt(prompt('Input y'));
+        let length = parseInt(prompt('Input length '));
+        let width = parseInt(prompt('Input width'));
+        return new Rectangle(x, i, length, width);
+    }
+    let newRec = inputRectangle();
+    document.write(newRec.getRectangleArea()+'<br>');
+    document.write(newRec.getRectanglePerimeter());
+    newRec.drawRectangle();
+
+
+
+</script>
+</body>
+</html>

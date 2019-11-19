@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+<script>
+   /* let person = {
+        name: {
+            first: 'Bob',
+            last: 'Smith'
+        },
+        age: 32,
+        gender: 'male',
+        interest: ['music', 'skiing'],
+        bio: function () {
+            alert(this.name.first +' '+this.name.last+' is ' + this.age + ' years old. He likes ' + this.interest[0] + ' and '  + this.interest[1]+'.');
+        },
+        greeting: function () {
+            alert('Hi! I\'m ' + this.name.first+'.');
+        }
+    };
+    person['eyes'] = 'hazel';
+    person.farewell = function() { alert("Bye everybody!"); };
+    let myDataName = 'height';
+    let myDataValue = '1.75';
+    person[myDataName] = myDataValue;
+
+    alert(person.height);
+*/
+   function Apple (type) {
+       this.type = type;
+       this.color = "red";
+       this.getInfo = getAppleInfo;
+   }
+
+   function getAppleInfo() {
+       return this.color + ' ' + this.type + ' apple';
+   }
+
+   let apple = new Apple('macintosh');
+   apple.color = "reddish";
+   alert(apple.getInfo());
+
+
+
+
+
+
+</script>
+</body>
+</html>

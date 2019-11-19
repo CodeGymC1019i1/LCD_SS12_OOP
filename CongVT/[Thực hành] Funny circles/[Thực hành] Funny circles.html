@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Thực hành] Funny circles
+    </title>
+</head>
+<body>
+<canvas id="myCanvas" width="1368px" height="768px" style="border: 1px solid #d3d3d3;"></canvas>
+<script>
+
+    let Circle = function (x, y, radius, colorCircle){
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.colorCircle = colorCircle;
+        this.drawCircle = function createCircle(){
+            let ctx = document.getElementById("myCanvas").getContext("2d");
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, 2*Math.PI);
+            ctx.fillStyle = colorCircle;
+            let myCanvas = document.getElementById('myCanvas') ;
+            ctx.clearRect(0, 0, myCanvas.height, myCanvas.width);
+            ctx.fill();
+            ctx.closePath();
+            ctx.stroke();
+            x++;
+            y++;
+        };
+    };
+
+    function randomCircle() {
+        let x = Math.random() * window.innerWidth;
+        let y = Math.random() * window.innerHeight;
+        let radius = Math.floor(Math.random()*80);
+        let red = Math.floor(Math.random()*255);
+        let green = Math.floor(Math.random()*255);
+        let blue = Math.floor(Math.random()*255);
+        let colorCircle =  "rgb(" + red + "," + blue + "," + green +")";
+        return new Circle(x,y,radius,colorCircle)
+    }
+
+    for (let i = 0; i < 30; i++) {
+        let circle = randomCircle();
+        setInterval(circle.drawCircle, 0.005);
+    }
+
+
+</script>
+</body>
+</html>
