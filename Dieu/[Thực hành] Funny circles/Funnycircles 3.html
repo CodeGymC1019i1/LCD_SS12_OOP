@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Funny circles 3</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="1300" height="630" style="border: 1px solid black;"></canvas>
+    <script>
+        let circles = [];
+        let canvas = document.getElementById("myCanvas");
+        let ctx = canvas.getContext("2d");
+
+        let Circle = function (x, y, radius, color, speedX,speedY) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.color = color;
+
+            this.draw = function () {
+                let ctx = document.getElementById("myCanvas").getContext("2d");
+                ctx.beginPath();
+                ctx.arc(this.x,this.y,this.radius,0,2*Math.PI);
+                ctx.fillStyle=this.color;
+                ctx.fill();
+            }
+            this.move = function () {
+                this.x += speedX;
+                this.y += speedY;
+                if (this.x <=0 || this.x>=myCanvas.width)
+                    speedX = - speedX;
+                if (this.y <= 0 || this.y >=myCanvas.height)
+                    speedY = -speedY;
+            }
+
+        }
+        function getRandomHex() {
+            return Math.floor(Math.random()*255);
+        }
+        function getRandomColor() {
+            let red = getRandomHex();
+            let green = getRandomHex();
+            let blue = getRandomHex();
+            return "rgb(" +red +","+green+","+blue+")";
+        }
+
+        function creatCircle() {
+            let x = Math.random()*myCanvas.width;
+            let y = Math.random()*myCanvas.height;
+            let color = getRandomColor();
+            let radius = Math.floor(Math.random()*80);
+            let speedX = Math.floor(Math.random()*10)+5;
+            let speedY = Math.floor(Math.random()*10)+5;
+            let circle = new Circle(x,y,radius,color,speedX,speedY);
+            circles.push(circle);
+            circle.draw();
+
+
+        }
+        function creatMultiCircle(){
+            for (let i = 0; i < 30; i++) {
+                creatCircle();
+            }
+        }
+
+        function moveMultiCircle() {
+            ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+            for (let i = 0; i < 30; i++) {
+                circles[i].draw();
+                circles[i].move();
+            }
+        }
+        creatMultiCircle();
+        setInterval(moveMultiCircle,30);
+
+    </script>
+</body>
+</html>

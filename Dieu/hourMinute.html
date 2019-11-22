@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Goc giua kim gio va kim phut</title>
+</head>
+<body>
+    <script>
+        function angleHourMinuteHand(hour,minute) {
+            let angle = Math.abs(minute*5.5 - hour*30);
+            if (angle > 180)
+                angle = 360-angle;
+            return angle;
+        }
+
+        let hour = prompt("nhap gio hien tai: ");
+        let minute = prompt("nhap phut hien tai ");
+        let angle = angleHourMinuteHand(hour,minute);
+        alert("goc giua kim gio va kim phut la "+angle+" do");
+    </script>
+</body>
+</html>

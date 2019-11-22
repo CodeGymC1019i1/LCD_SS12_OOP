@@ -5,8 +5,55 @@
     <title>Funny Circles</title>
 </head>
 <body>
+    <canvas id = "myCanvas" width="1350px" height="630px" style="border:1px solid black">
+        Trình duyệt của bạn không hỗ trợ thẻ canvas trong HTML5.
+    </canvas>
     <script>
+        let x = 0;
+        let y = 0;
+        let speedX = 10;
+        let speedY = 10;
+        let radius = 40;
+        let ctx = document.getElementById("myCanvas").getContext("2d");
 
+        let Circle = function (x, y, radius) {
+            this.x  = x;
+            this.y = y;
+            this.radius =  radius;
+            this.getRandomHex = function () {
+                return Math.floor(Math.random()*255);
+            };
+            this.getRandomColor = function () {
+                let red = this.getRandomHex();
+                let green = this.getRandomHex();
+                let blue = this.getRandomHex();
+                return "rgb("+red+","+green+","+blue+")";
+            }
+
+            this.createCircle = function () {
+                let circle = new Circle(x,y,radius);
+                let color = this.getRandomColor();
+                ctx.beginPath();
+                ctx.arc(circle.x, circle.y,circle.radius,0,2*Math.PI);
+                ctx.fillStyle = color;
+                ctx.fill();
+                ctx.closePath();
+                x += speedX;
+                y += speedY;
+                if (x===0 || x === myCanvas.width)
+                    speedX = -speedX;
+                if (y===0 || y === myCanvas.height)
+                    speedY = -speedY;
+            }
+
+        };
+        let circle = new Circle(x,y,radius);
+        setInterval(function () {
+            ctx.clearRect(0,0,myCanvas.width,myCanvas.height);
+                circle.createCircle();
+
+        },100)
     </script>
+c
 </body>
 </html>

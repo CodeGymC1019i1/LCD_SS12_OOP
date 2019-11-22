@@ -7,6 +7,8 @@
 <body>
     <canvas id="myCanvas" width="1000px" height="620px" style="border:1px solid #d3d3d3;">
     <script>
+
+
         function Circle(x, y, radius) {
             this.x = x;
             this.y = y;
@@ -29,33 +31,25 @@
             let ctx = document.getElementById("myCanvas").getContext("2d");
             let radius = 40;
             let color = getRandomColor();
+            let x = Math.random() * myCanvas.width;
+            let y = Math.random() * myCanvas.height;
             let circle = new Circle(x,y,radius);
             ctx.beginPath();
             ctx.arc(circle.x, circle.y, circle.radius, 0, 2*Math.PI);
             ctx.fillStyle = color;
-            ctx.clearRect(0,0,myCanvas.width,myCanvas.height);
             ctx.fill();
             ctx.closePath();
-            x+= speedX;
-            y+= speedY;
-            if (x===0 || x === myCanvas.width)
-                speedX = -speedX;
-            if (y===0 || y === myCanvas.height)
-                speedY = -speedY;
+
 
 
         }
-        // function creatMultiCircle() {
-        //     for (let i = 0; i < 30; i++) {
-        //         creatCricle();
-        //     }
-        // }
-        //
-        // creatMultiCircle();
-        setInterval(function (){
-            creatCricle();
+        function creatMultiCircle() {
+            for (let i = 0; i < 30; i++) {
+                creatCricle();
+            }
+        }
 
-        },50)
+        creatMultiCircle();
     </script>
 </body>
 </html>

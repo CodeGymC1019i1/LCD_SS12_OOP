@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UCLN-BCNN</title>
+</head>
+<body>
+    <script>
+
+        function getGcd(num1,num2) {
+            while (num1!=num2){
+                if ( num1>num2)
+                    num1 = num1 - num2;
+                else
+                    num2 = num2 - num1;
+            }
+            return num1;
+        }
+        function getLcm(num1, num2, gcd) {
+            return num1*num2/gcd;
+        }
+        let num1 = prompt("moi nhap so thu nhat: ");
+        let num2 = prompt("moi nhap so thu 2: ");
+        let gcd = getGcd(num1,num2);
+        let lcm = getLcm(num1,num2,gcd);
+        alert(num1 + " va " +num2 +" co uoc chung nho nhat la: "+gcd+ " va boi chung nho nhat la: "+lcm );
+
+
+    </script>
+</body>
+</html>

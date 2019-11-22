@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rectangle</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="1300px" height="630px" style="border: 1px solid black"></canvas>
+    <script>
+
+        let Reactangle = function (widthR, heightR) {
+            this.widthR = widthR;
+            this.heightR = heightR;
+
+            this.getWidthR = function () {
+                return widthR;
+            }
+            this.getHeightR = function () {
+                return heightR;
+            }
+            this.getArea = function () {
+                return widthR*heightR;
+            }
+            this.getPerimeter = function () {
+                return 2*(widthR+heightR);
+            }
+            this.drawRectangle = function () {
+                let ctx = document.getElementById("myCanvas").getContext("2d");
+                ctx.beginPath();
+                ctx.rect(25,25,this.widthR,this.heightR);
+                ctx.strokeStyle = "red";
+                ctx.stroke();
+                ctx.closePath()
+
+            };
+            this.drawText = function () {
+                let ctx = document.getElementById("myCanvas").getContext("2d");
+                ctx.font = "25px serif";
+                let perimeter = this.getPerimeter();
+                let area = this.getArea();
+                ctx.fillText("chu vi la: "+perimeter +", dien tich "+ area, 50, 50);
+            }
+
+        };
+        let rectangle = new Reactangle(400, 250);
+        rectangle.drawRectangle();
+        rectangle.drawText();
+    </script>
+</body>
+</html>
