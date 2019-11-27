@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Funny Circles2</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1500px" height="700px" style="border:1px solid #d3d3d3;">
+    <script>
+        let cv = document.getElementById("myCanvas");
+        let speedx = getRandomHex();
+        let speedy = getRandomHex();
+        let arrCircle = [];
+        let Circle = function (x,y,radius) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.drawCircle = function () {
+                let color = getRandomColor();
+                cv.getContext("2d").beginPath();
+                cv.getContext("2d").arc(this.x,this.y,this.radius,0,2*Math.PI);
+                cv.getContext("2d").fill();
+                cv.getContext("2d").fillStyle = color;
+                cv.getContext("2d").closePath();
+                arrCircle.push()
+
+                // this.x+=5;
+                // this.y+=5;
+            };
+            this.moveCircle = function () {
+                this.x+= speedx;
+                this.y+= speedy;
+                if (this.x == myCanvas.width || this.x == 0) speedx = -speedx;
+                if (this.y == myCanvas.height || this.y == 0) speedy = -speedy;
+            }
+
+        };
+        function getRandomColor() {
+            var red = getRandomHex();
+            var green = getRandomHex();
+            var blue = getRandomHex();
+            return "rgb(" + red + "," + blue + "," + green + ")";
+        }
+        function getRandomHex() {
+            return Math.floor(Math.random() * 255);
+        }
+        let circle = new Circle(Math.random()*myCanvas.width,Math.random()*myCanvas.height,getRandomHex());
+        function drawAndMove(circle) {
+            cv.getContext("2d").clearRect(0,0,myCanvas.width,myCanvas.height);
+                circle.drawCircle();
+                circle.moveCircle();
+        }
+        function multiCircles(){
+            for(i=1;i<10;i++)
+                drawAndMove(i)
+        }
+
+        setInterval(multiCircles,100)
+
+    </script>
+</canvas>
+</body>
+</html>

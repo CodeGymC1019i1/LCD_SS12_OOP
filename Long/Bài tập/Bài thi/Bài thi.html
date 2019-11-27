@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu1</title>
+</head>
+<body>
+<script>
+    let score = [];
+    let n;
+    do{
+        n = parseInt(prompt('Số lượng điểm số'));
+    }
+    while (n<0 || Number.isNaN(n));
+
+    function creatArrryScore(n) {
+        for (let i = 0; i < n; i++) {
+            score[i] = parseFloat(prompt('Điểm học sinh'));
+        }
+    }
+
+    function findMinScore() {
+        let min = score[0];
+        for (let i = 0; i < score.length; i++) {
+            if (min > score[i]) {
+                min = score[i];
+            }
+        }
+        return min;
+    }
+
+    function main() {
+        creatArrryScore(n);
+        findMinScore(score);
+        console.log(findMinScore(score))
+    }
+    main();
+</script>
+</body>
+</html>

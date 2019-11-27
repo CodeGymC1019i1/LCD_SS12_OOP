@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2</title>
+</head>
+<body>
+<script>
+    let array = [];
+    let array2= [];
+    let n;
+    do {
+        n = parseInt(prompt('Số phần tử của mảng'));
+    }
+    while (n < 0 || Number.isNaN(n));
+
+    function creatArray(n) {
+        for (let i = 0; i < n; i++) {
+            array[i] = prompt('Nhập phần tử của mảng');
+        }
+    };
+
+    function tryRemoveFromArray(array,index) {
+        if (index<array.length && Number.isNaN(index) == false) {
+            for (let i=0;i<array.length;i++){
+                if(i==index) continue;
+                array2.push(array[i]);
+            }
+            return array2;
+        }
+        return array;
+    }
+
+    function main() {
+        creatArray(n);
+        let index = parseInt(prompt('Vị trí phần tử trong mảng cần xóa bỏ'));
+        tryRemoveFromArray(index);
+        console.log(tryRemoveFromArray(array,index))
+    }
+
+    main();
+</script>
+</body>
+</html>

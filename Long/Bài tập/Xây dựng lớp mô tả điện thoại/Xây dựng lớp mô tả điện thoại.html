@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả điện thoại</title>
+</head>
+<body>
+<script>
+    let Mobile = function (name) {
+        this.Name=name;
+        this.Msg='';
+        this.Inbox=[];
+        this.Outbox=[];
+
+        this.getName = function () {
+            return this.Name;
+        };
+        this.setWriteMsg = function (value) {
+            this.Msg=value;
+        };
+        this.setSendMsg = function (name) {
+            this.Outbox.push(this.Msg);
+            name.getReceiveMsg(this.Msg)
+        };
+        this.getReceiveMsg = function (tinnhan) {
+            return this.Inbox.push(tinnhan)
+        };
+        this.setName = function (name) {
+            this.Name = name;
+        }
+    }
+    let mobile1 = new Mobile("nokia");
+    let mobile2 = new Mobile("iph");
+    mobile1.setWriteMsg('alo');
+    mobile1.setSendMsg(mobile2);
+    console.log(mobile1);
+    console.log(mobile2);
+
+
+
+</script>
+</body>
+</html>

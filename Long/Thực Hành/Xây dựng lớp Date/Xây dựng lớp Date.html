@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp Date</title>
+</head>
+<body>
+<script>
+    let MyDate = function (day, month, year) {
+
+        this.day = day;
+
+        this.month = month;
+
+        this.year = year;
+
+        this.getDay = function () {
+            return this.day;
+        }
+        this.getMonth = function () {
+            return this.month;
+        }
+        this.getYear = function () {
+            return this.year;
+        }
+        this.setDay = function (day) {
+            this.day = day;
+        }
+        this.setMonth = function (month) {
+            this.month = month;
+        }
+        this.setYear = function (year) {
+            this.year = year;
+        }
+        this.setDate = function (day,month,year) {
+            this.day = day;
+            this.month = month;
+            this.year = year;
+        }
+        this.toString = function () {
+            // alert(this.day+'/'+this.month+'/'+this.year)
+            return this.day+'/'+this.month+'/'+this.year;
+        }
+
+        }
+    let date = new MyDate(2, 2, 2007);
+    //     let day = date.getDay();
+    //
+    //     let month = date.getMonth();
+    //
+    //     let year = date.getYear();
+    // alert(day + "/" + month + "/" + year);
+    date.setDay(10);
+    date.setMonth(10);
+    date.setYear(2019);
+    date.setDate (18,11,2019);
+    let day = date.getDay();
+    let month = date.getMonth();
+    let year = date.getYear();
+    let dat1= date.toString()
+    // alert(day + "/" + month + "/" + year);
+    alert('Hôm này là: '+dat1)
+    
+</script>
+</body>
+</html>
